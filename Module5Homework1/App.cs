@@ -21,24 +21,24 @@ namespace Module5Homework1
         {
             var list = new List<Task>();
 
-            list.Add(_userService.GetUsers());
-            list.Add(_userService.GetUsersWithDelay(3));
-            list.Add(_userService.GetUserById(2));
-            list.Add(_userService.GetUserById(23));
+            list.Add(Task.Run(async () => await _userService.GetUsers()));
+            list.Add(Task.Run(async () => await _userService.GetUsersWithDelay(3)));
+            list.Add(Task.Run(async () => await _userService.GetUserById(2)));
+            list.Add(Task.Run(async () => await _userService.GetUserById(23)));
 
-            list.Add(_resourceService.GetResources());
-            list.Add(_resourceService.GetResourceById(2));
-            list.Add(_resourceService.GetResourceById(23));
+            list.Add(Task.Run(async () => await _resourceService.GetResources()));
+            list.Add(Task.Run(async () => await _resourceService.GetResourceById(2)));
+            list.Add(Task.Run(async () => await _resourceService.GetResourceById(23)));
 
-            list.Add(_employeeService.Create("morpheus", "leader"));
-            list.Add(_employeeService.Update(2, "morpheus", "zion resident"));
-            list.Add(_employeeService.Update(2, "morpheus", "zion resident", true));
-            list.Add(_employeeService.Delete(2));
+            list.Add(Task.Run(async () => await _employeeService.Create("morpheus", "leader")));
+            list.Add(Task.Run(async () => await _employeeService.Update(2, "morpheus", "zion resident")));
+            list.Add(Task.Run(async () => await _employeeService.Update(2, "morpheus", "zion resident", true)));
+            list.Add(Task.Run(async () => await _employeeService.Delete(2)));
 
-            list.Add(_authService.Login("eve.holt@reqres.in", "cityslicka"));
-            list.Add(_authService.Login("peter@klaven"));
-            list.Add(_authService.Register("eve.holt@reqres.in", "pistol"));
-            list.Add(_authService.Register("sydney@fife"));
+            list.Add(Task.Run(async () => await _authService.Login("eve.holt@reqres.in", "cityslicka")));
+            list.Add(Task.Run(async () => await _authService.Login("peter@klaven")));
+            list.Add(Task.Run(async () => await _authService.Register("eve.holt@reqres.in", "pistol")));
+            list.Add(Task.Run(async () => await _authService.Register("sydney@fife")));
 
             await Task.WhenAll(list);
 
