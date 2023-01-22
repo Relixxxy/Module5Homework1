@@ -36,14 +36,11 @@ namespace Module5Homework1
             list.Add(Task.Run(async () => await _employeeService.Delete(2)));
 
             list.Add(Task.Run(async () => await _authService.Login("eve.holt@reqres.in", "cityslicka")));
-            list.Add(Task.Run(async () => await _authService.Login("peter@klaven")));
+            list.Add(Task.Run(async () => await _authService.Login("peter@klaven", null!)));
             list.Add(Task.Run(async () => await _authService.Register("eve.holt@reqres.in", "pistol")));
-            list.Add(Task.Run(async () => await _authService.Register("sydney@fife")));
+            list.Add(Task.Run(async () => await _authService.Register("sydney@fife", null!)));
 
             await Task.WhenAll(list);
-
-            // This line was added to wait for logger
-            Console.WriteLine("All done");
         }
     }
 }

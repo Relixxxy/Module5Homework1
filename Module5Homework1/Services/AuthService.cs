@@ -22,7 +22,7 @@ namespace Module5Homework1.Services
             _options = options.Value;
         }
 
-        public async Task<LoginResponse> Login(string email, string? password = null)
+        public async Task<LoginResponse> Login(string email, string password)
         {
             string url = $"{_options.Host}{_url}login";
             var authData = new AuthRequest { Email = email, Password = password };
@@ -30,13 +30,13 @@ namespace Module5Homework1.Services
 
             if (response != null)
             {
-                _logger.LogInformation($"Successfully login with token {response.Token}");
+                _logger.LogInformation($"Successfully login with token {response.Token}\n");
             }
 
             return response!;
         }
 
-        public async Task<RegisterResponse> Register(string email, string? password = null)
+        public async Task<RegisterResponse> Register(string email, string password)
         {
             string url = $"{_options.Host}{_url}register";
 
@@ -45,7 +45,7 @@ namespace Module5Homework1.Services
 
             if (response != null)
             {
-                _logger.LogInformation($"Successfully register with token {response.Token} and id {response.Id}");
+                _logger.LogInformation($"Successfully register with token {response.Token} and id {response.Id}\n");
             }
 
             return response!;

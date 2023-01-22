@@ -23,8 +23,9 @@ namespace Module5Homework1.Services
 
             if (content != null)
             {
+                var json = JsonConvert.SerializeObject(content);
                 httpMessage.Content =
-                    new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, MEDIATYPE);
+                    new StringContent(json, Encoding.UTF8, MEDIATYPE);
             }
 
             var result = await client.SendAsync(httpMessage);
